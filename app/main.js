@@ -55,11 +55,13 @@ var contactList = new Vue( {
 				email: 'theboywholived@hogwarts.edu'
 			},
 		],
-		nextContactId : 4
+		nextContactId : 4,
+		attemptingSave: false
 	},
 
 	computed: {
 
+		// TO DO: Needs to be fixed, doesn't work
 		abcContacts: function() {
 			return this.contacts.sort(this.alphabetizeContacts);
 		}
@@ -102,25 +104,28 @@ function alphabetizeContacts(a, b) {
 
 }
 
+// TO DO: Put validation functions into this
 
 function addContact() {
-	this.contacts.push(
-		{
+	if (this.newName !== '' && this.newPhoneNumber !== '' && this.newEmail !== '') {
+		this.contacts.push({
 			id: this.nextContactId++,
 			name: this.newName,
 			phoneNumber: this.newPhoneNumber,
 			email: this.newEmail
-		}
-	);
-	this.newName = '';
-	this.newPhoneNumber = '';
-	this.newEmail = '';
+		});
+		this.newName = '';
+		this.newPhoneNumber = '';
+		this.newEmail = '';
 	}
+}
+
 
 function removeContact(id) {
 	var contactIndex = this.findContact(id);
 	this.contacts.splice(contactIndex, 1);
 }
+
 
 function findContact(id) {
 	return this.contacts.findIndex(function(contact) { 
@@ -128,39 +133,51 @@ function findContact(id) {
 		});
 }
 
+
 function validateName() {
 
 	var nameRe = /[- a-zA-Z]+$/;
 
-	if (this.newName.match(nameRe) || this.newName !== '') {
+	if (this.newName.match(nameRe)) {
 		document.getElementById("btnSave").disabled = false;
 		return true;
+	} else if (this.newPhoneNumber == '') {
+		document.getElementById("btnSave").disabled = true;
+		return false;
 	} else {
 		document.getElementById("btnSave").disabled = true;
 		return false;
 	}
 }
 
+
 function validatePhoneNumber(newPhoneNumber) {
 
 	var phoneRe = /^[0-9\-\+\s\(\)]*$/;
 
-		if (this.newPhoneNumber.match(phoneRe) || this.newPhoneNumber !== '') {
+		if (this.newPhoneNumber.match(phoneRe)) {
 			document.getElementById("btnSave").disabled = false;
 			return true;
+		} else if (this.newPhoneNumber == '') {
+			document.getElementById("btnSave").disabled = true;
+			return false;
 		} else {
 			document.getElementById("btnSave").disabled = true;
 			return false;
 		}
 }
 
+
 function validateEmail() {
 	
 	var emailRe = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	
-	if (this.newEmail.match(emailRe) || this.newEmail !== '') {
+	if (this.newEmail.match(emailRe)) {
 		document.getElementById("btnSave").disabled = false;
 		return true;
+	} else if (this.newPhoneNumber == '') {
+		document.getElementById("btnSave").disabled = true;
+		return false;
 	} else {
 		document.getElementById("btnSave").disabled = true;
 		return false;

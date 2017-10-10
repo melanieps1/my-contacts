@@ -15,14 +15,10 @@ hr {
 	margin: 24px 40px;
 }
 
-/*li {
-	background-color: #ccc;
-	border-radius: 2px;
-	list-style: none;
-	margin: 8px 0;
-	padding: 12px;
-	width: 100%;
-}*/
+.btn-outline-primary:disabled {
+    color: #a8a8a8;
+    border-color: #a8a8a8;
+}
 
 .buttonColumn {
 	text-align: center;

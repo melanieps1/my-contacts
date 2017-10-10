@@ -22,36 +22,37 @@
 		
 		<hr>
 
-		<div class="form-group row">
+		<div class="form">
+			
+			<div class="form-group row">
 		    <input id="nameInput"
-		    			 class="form-control has-error" 
+		    			 class="form-control"
 		           type="text" 
 		           placeholder="Add Name"
-		           v-model="newName"
-		           v-on:blur="validateName">
-		</div>
+		           v-model="newName">
+			</div>
 
-		<div class="form-group row">
+			<div class="form-group row">
 		    <input id="phoneNumberInput"
-		    			 class="form-control has-error" 
+		    			 class="form-control"
 		           type="tel"	           
 		           placeholder="Add Phone Number (xxx-xxx-xxxx)"
-		           v-model="newPhoneNumber" 
-		           v-on:blur="validatePhoneNumber">
-		</div>
+		           v-model="newPhoneNumber">
+			</div>
 
-		<div class="form-group row">
+			<div class="form-group row">
 		    <input id="emailInput"
-		    			 class="form-control has-error" 
+		    			 class="form-control"
 		           type="tel"
 		           placeholder="Add Email"
 		           v-model="newEmail" 
-		           v-on:blur="validateEmail"
 							 v-on:keyup.enter="addContact">
-		</div>
+			</div>
 
-		<div class="form-group row">
-			<button type="submit" class="btn btn-outline-primary mx-auto" id="btnSave" v-on:click="addContact" v-on:keyup.enter="addContact" disabled=true>Save</button>
+			<div class="form-group row">
+				<button type="submit" class="btn btn-outline-primary mx-auto" id="btnSave" v-on:click="addContact()" v-on:keyup.enter="addContact()">Save</button>
+			</div>
+
 		</div>
 
 		<hr>
