@@ -1,5 +1,21 @@
 Vue.component( 'contactLine', {
-	template : '<tr><td class="buttonColumn"><button v-on:click="removeContact(contact.id)"><i class="fa fa-trash-o"></i></button></td><td>{{ name }}</td><td>{{ phoneNumber }}</td><td>{{ email }}</td></tr>',
+	template :\
+		'<tr>\
+			<td class="buttonColumn">\
+				<button v-on:click="removeContact(contact.id)">\
+					<i class="fa fa-trash-o"></i>\
+				</button>\
+			</td>\
+			<td>\
+				{{ name }}\
+			</td>\
+			<td>\
+				{{ phoneNumber }}\
+			</td>\
+			<td>\
+				{{ email }}\
+			</td>\
+		</tr>',
 
 	props : [ 'id', 'name', 'phoneNumber', 'email', 'removeContact' ]
 });
