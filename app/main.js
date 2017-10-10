@@ -1,8 +1,8 @@
 Vue.component( 'contactLine', {
-	template :\
+	template :
 		'<tr>\
 			<td class="buttonColumn">\
-				<button v-on:click="removeContact(contact.id)">\
+				<button v-on:click="removeContact">\
 					<i class="fa fa-trash-o"></i>\
 				</button>\
 			</td>\
