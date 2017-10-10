@@ -2,7 +2,7 @@ Vue.component( 'contactLine', {
 	template :
 		'<tr>\
 			<td class="buttonColumn">\
-				<button v-on:click="removeContact">\
+				<button v-on:click="removeContact(id)">\
 					<i class="fa fa-trash-o"></i>\
 				</button>\
 			</td>\
@@ -34,25 +34,44 @@ var contactList = new Vue( {
 				id: 1,
 				name: 'Albus Dumbledore',
 				phoneNumber: '859-123-4567',
-				email: 'albus@dumbledore.com'
+				email: 'headmaster@hogwarts.edu'
 			},
 			{
 				id: 2,
 				name: 'Minerva McGonagall',
 				phoneNumber: '606-234-9876',
-				email: 'minerva@mcgonagall.com'
+				email: 'professor.mcgonagall@hogwarts.edu'
 			},
 			{
 				id: 3,
-				name: 'Severus Snape',
-				phoneNumber: '502-444-1010',
-				email: 'severus@snape.com'
+				name: 'Hermione Granger',
+				phoneNumber: '203-535-9501',
+				email: 'hermione.granger@hogwarts.edu'
+			},
+			{
+				id: 3,
+				name: 'Harry Potter',
+				phoneNumber: '303-859-9933',
+				email: 'theboywholived@hogwarts.edu'
 			},
 		],
 		nextContactId : 4
 	},
 
+	computed: {
+
+		abcContacts: function() {
+			return this.contacts.sort(this.alphabetizeContacts);
+		}
+
+	},
+
+	beforeMount: function() {
+
+	},
+
 	methods: {
+		alphabetizeContacts: alphabetizeContacts,
 		addContact: addContact,
 		removeContact: removeContact,
 		findContact: findContact,
@@ -62,6 +81,26 @@ var contactList = new Vue( {
 	}
 
 });
+
+function alphabetizeContacts(a, b) {
+
+	var aName = a.name.toLowerCase();
+	var bName = b.name.toLowerCase();
+
+	// -1: a < b
+	// 0: a = b
+	// 1: a > b
+	// We are trying to return one of these three values so the sort algorithm knows how to return the contact list
+
+	if (aName < bName) {
+		return -1;
+	} else if (aName > bName) {
+		return 1;
+	} else {
+		return 0;
+	}
+
+}
 
 
 function addContact() {
@@ -79,16 +118,14 @@ function addContact() {
 	}
 
 function removeContact(id) {
-	var contactIndex = this.findContact( id );
-	this.contacts.splice( contactIndex, 1 );
+	var contactIndex = this.findContact(id);
+	this.contacts.splice(contactIndex, 1);
 }
 
 function findContact(id) {
-	return this.contacts.findIndex( 
-		function( contact ) { 
-			return ( id === contact.id ); 
-		} 
-	);
+	return this.contacts.findIndex(function(contact) { 
+			return id === contact.id; 
+		});
 }
 
 function validateName() {
