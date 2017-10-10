@@ -1,41 +1,52 @@
-* {
-	margin : 0px;
-	padding : 0px;
-}
+/*
+  Salmon: #ff7473
+  Yellow: #ffc952
+  Blue: #47b8e0
+  Ink: #34314c
+*/
 
 [v-cloak] {
-	display: none;
+  display: none;
 }
 
-#contactList {
-	padding: 24px;
+::placeholder {
+  font-family: 'Caveat', cursive;
+  color: #ccc !important;
+}
+
+body {
+  color: #47b8e0;
+}
+
+label {
+  color: #47b8e0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  color: #ff7473;
+}
+
+h1 {
+  padding-bottom: 20px;
+}
+
+#contactApp {
+  padding-top: 15px;
+  margin: 0px auto;
+}
+
+.divider {
+  border-color: #ff7473;
+  border-width: 2px;
 }
 
 hr {
-	margin: 24px 40px;
+  margin: 20px auto;
+  width: 100%;
 }
 
-.btn-outline-primary:disabled {
-    color: #a8a8a8;
-    border-color: #a8a8a8;
+.row {
+  padding-bottom: 10px;
 }
-
-.buttonColumn {
-	text-align: center;
-}
-
-button {
-	background: none;
-	border: none;
-	color: #333;
-	float: right;
-}
-
-button:hover {
-	color: #000;
-	cursor: pointer;
-}
-
-/*.inputError {
-	border: 1px solid #ef5350;
-}*/
